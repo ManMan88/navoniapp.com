@@ -142,6 +142,41 @@
   .soon h2 { color: #FFF7EA; font-size: clamp(1.7rem, 6vw, 2.4rem); }
   .soon p { margin: 0 auto; max-width: 34rem; }
   .soon a { color: #FFE3A3; }
+  .contact {
+    display: grid;
+    gap: 12px;
+    max-width: 28rem;
+    margin: 20px auto 0;
+    text-align: start;
+  }
+  .contact label { display: grid; gap: 4px; font-weight: 700; font-size: 16px; }
+  .contact input, .contact textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 2px solid transparent;
+    border-radius: 12px;
+    background: var(--paper);
+    color: var(--ink);
+    font: inherit;
+    font-weight: 400;
+  }
+  .contact input:focus, .contact textarea:focus { outline: none; border-color: #FFE3A3; }
+  .contact textarea { resize: vertical; }
+  .contact button {
+    justify-self: center;
+    padding: 10px 36px;
+    border: 0;
+    border-radius: 999px;
+    background: var(--fox);
+    color: #FFF7EA;
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+  }
+  .contact button:hover { background: var(--fox-deep); }
+  .contact button:disabled { opacity: .6; cursor: default; }
+  .contact .status { margin: 0; min-height: 1.65em; text-align: center; }
+  .contact .hp { display: none; }
   .soon-row { display: flex; justify-content: center; align-items: flex-end; gap: 14px; margin-bottom: 10px; }
   .soon-row svg { width: 44px; height: 44px; }
   .soon-row .fox-face { width: 64px; height: 64px; }
@@ -462,7 +497,17 @@
         <svg viewBox="-20 -20 40 36"><ellipse rx="15" ry="13" fill="#D7342A"/><ellipse cx="-5" cy="-4" rx="4.5" ry="3" fill="#fff" opacity=".35"/><path d="M0 -13 l4 -3 l1 4 l5 -1 l-3 4 l-7 -1 l-7 1 l-3 -4 l5 1 l1 -4z" fill="#8CC63F"/></svg>
       </div>
       <h2>בקרוב ב-Google Play</h2>
-      <p>אנחנו מסיימים לבנות ולבדוק את הפרק הראשון. יש שאלה? כתבו לנו: <a href="mailto:rondanon@gmail.com">rondanon@gmail.com</a></p>
+      <p>אנחנו מסיימים לבנות ולבדוק את הפרק הראשון. יש שאלה? כתבו לנו:</p>
+      <form class="contact" id="contact" action="https://api.web3forms.com/submit" method="POST">
+        <input type="hidden" name="access_key" value="ffc09994-a357-448d-a117-6b94abac511d">
+        <input type="hidden" name="subject" value="הודעה חדשה מ-navoniapp.com">
+        <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <label>שם<input type="text" name="name" autocomplete="name"></label>
+        <label>אימייל לתשובה<input type="email" name="email" autocomplete="email" dir="ltr" required></label>
+        <label>הודעה<textarea name="message" rows="4" required></textarea></label>
+        <button type="submit">שליחה</button>
+        <p class="status" role="status" aria-live="polite"></p>
+      </form>
     </div>
   </section>
 
@@ -483,9 +528,31 @@
 <footer>
   <a href="/privacy">מדיניות פרטיות</a>
   <a href="/privacy#en" lang="en">Privacy policy</a>
-  <a href="mailto:rondanon@gmail.com">rondanon@gmail.com</a>
   <span lang="en" dir="ltr">© 2026 Ron Danon</span>
 </footer>
 
+<script>
+  (function () {
+    var form = document.getElementById("contact");
+    var status = form.querySelector(".status");
+    var button = form.querySelector("button");
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      button.disabled = true;
+      status.textContent = "שולחים…";
+      fetch(form.action, { method: "POST", body: new FormData(form), headers: { Accept: "application/json" } })
+        .then(function (r) { return r.json(); })
+        .then(function (data) {
+          if (!data.success) throw new Error(data.message);
+          form.reset();
+          status.textContent = "תודה! ההודעה נשלחה, ונחזור אליכם בקרוב.";
+        })
+        .catch(function () {
+          status.textContent = "משהו השתבש. נסו שוב בעוד רגע.";
+        })
+        .finally(function () { button.disabled = false; });
+    });
+  })();
+</script>
 </body>
 </html>
