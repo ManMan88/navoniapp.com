@@ -108,6 +108,7 @@
   }
   .story { display: grid; gap: 24px; align-items: center; }
   .story p { margin: 0; font-size: 1.1rem; }
+  .story p + p { margin-top: 12px; }
   .journey { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
   .journey figure { margin: 0; text-align: center; font-size: 15px; color: var(--ink-soft); }
   .journey svg { width: 84px; height: 84px; display: block; margin: 0 auto 4px; }
@@ -443,7 +444,8 @@
     <div class="wrap story">
       <div>
         <h2>מה זה Navoni?</h2>
-        <p>Navoni הוא משחק חשבון לילדים. ג׳וני השועל הלך לאיבוד ביער, והילדים עוזרים לו לחזור הביתה: אוספים תפוחים, בונים גשר מעל הנהר, קופצים על אבנים בדרך הביתה ופותחים את הדלת. בכל שלב סופרים, משלימים לעשר ומחסרים, בלי לשים לב שזה תרגול.</p>
+        <p>Navoni הוא משחק חשבון לילדים, שבו עוזרים לג׳וני השועל למצוא את הדרך הביתה.</p>
+        <p>בדרך אוספים תפוחים, בונים גשר מעל הנהר, קופצים בין אבנים ופותחים את הדלת הביתה. בכל שלב הילדים סופרים, משלימים לעשר ומחסרים — כחלק מהמשחק, בלי להרגיש שהם מתרגלים.</p>
       </div>
       <div class="journey" aria-hidden="true">
         <figure>
@@ -472,18 +474,18 @@
       <div class="cards">
         <article class="card" style="--c: var(--fox)">
           <svg viewBox="0 0 56 56" aria-hidden="true"><circle cx="28" cy="28" r="27" fill="#FBE6D3"/><path d="M14 23 h7 l9 -8 v26 l-9 -8 h-7z" fill="#D9722F"/><path d="M35 21 q5 7 0 14 M39 17 q9 11 0 22" stroke="#D9722F" stroke-width="3" fill="none" stroke-linecap="round"/></svg>
-          <h3>דיבוב מלא, אין צורך לדעת לקרוא</h3>
-          <p>כל הוראה, רמז ומספר נאמרים בקול, בעברית. ילדים שעוד לא קוראים משחקים לבד.</p>
+          <h3>דיבוב מלא — לא צריך לדעת לקרוא</h3>
+          <p>כל ההוראות, הרמזים והמספרים נאמרים בקול ובעברית, כך שגם ילדים שעדיין לא קוראים יכולים לשחק לבד.</p>
         </article>
         <article class="card" style="--c: var(--apple)">
           <svg viewBox="0 0 56 56" aria-hidden="true"><circle cx="28" cy="28" r="27" fill="#EAF3DD"/><path d="M12 42 h10 v-8 h10 v-8 h10 v16z" fill="#6FB13A"/><g transform="translate(37 18)"><circle r="6.5" fill="#D7342A"/><path d="M0 -6.5 l2 -2 l.5 2 l2.5 -.5 l-1.5 2 h-7 l-1.5 -2 l2.5 .5 l.5 -2z" fill="#3F7D3A"/></g></svg>
-          <h3>מתאים את עצמו לכל ילד</h3>
-          <p>כשקשה, המשחק עוזר צעד אחר צעד. כשקל, הוא מאתגר קצת יותר. בלי שעון, בלי פסילות ובלי עונשים.</p>
+          <h3>מתקדם בקצב של הילד</h3>
+          <p>כשקשה, Navoni עוזר צעד אחר צעד. כשקל, האתגר עולה בהדרגה. בלי שעון, בלי פסילות ובלי לחץ.</p>
         </article>
         <article class="card" style="--c: var(--tomato)">
           <svg viewBox="0 0 56 56" aria-hidden="true"><circle cx="28" cy="28" r="27" fill="#FBE0DD"/><path d="M28 14 l12 5 v9 c0 8 -6 13 -12 15 c-6 -2 -12 -7 -12 -15 v-9z" fill="#D7342A"/><path d="M22 28 l4 4 l8 -8" stroke="#FFF7EA" stroke-width="3.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
           <h3>שקט להורים</h3>
-          <p>בלי פרסומות, עובד בלי אינטרנט, ולא שולח מידע לאף אחד. <a href="/privacy">מדיניות הפרטיות</a></p>
+          <p>בלי פרסומות, עובד גם בלי אינטרנט, ולא מעביר מידע לצדדים שלישיים. <a href="/privacy">מדיניות הפרטיות</a></p>
         </article>
       </div>
     </div>
