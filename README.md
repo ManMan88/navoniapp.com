@@ -2,17 +2,12 @@
 
 The static site for Navoni. Its one job for now is the privacy policy at `https://navoniapp.com/privacy`, which Google Play needs before the first upload.
 
+- `index.html`: the "coming soon" landing page, in Hebrew then English. The scene is inline SVG, and there are no outside fonts, scripts or trackers.
 - `privacy.html`: the policy, in Hebrew then English. GitHub Pages serves it at `/privacy`.
-- `index.html`: a one-line landing page that links to it.
+- `og.png`: the 1200 × 630 preview that WhatsApp and other apps show for a shared link, rendered from the landing page's scene.
+- `favicon.svg`: Johnny's face.
+- `fonts/`: Noto Sans Hebrew as woff2 (the app's font), under the SIL Open Font License in `fonts/NotoSansHebrew-OFL.txt`.
 - `CNAME`: the custom domain.
-
-## Before publishing
-
-Fill the four placeholders in `privacy.html`: the developer name (as it will appear on Google Play) and the contact email, each in both languages.
-
-```bash
-grep -n '\[' privacy.html   # must print nothing
-```
 
 ## Publishing (GitHub Pages)
 
